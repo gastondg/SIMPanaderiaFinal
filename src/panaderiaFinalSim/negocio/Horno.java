@@ -45,8 +45,15 @@ public class Horno {
         this.estado = estado; //cambiar el estado segun prendido/apagado
     }
 
+    public void finHorno(double reloj) {
+        this.stock = 0;
+        this.estado = false;
+        this.finCoccion = 0;
+        this.setProximaPrendida(reloj);
+    }
+
     public void empezarHorneado(int stockSim, double reloj, double temperaturaInicial) {
-        this.estado=true; //prendido
+
         if (stockSim == 0) {
             finCoccion = reloj + TiempoTemperatura.calcularFinHorno(temperaturaInicial,45);
             this.stock = 45;
@@ -54,6 +61,8 @@ public class Horno {
             finCoccion = reloj + TiempoTemperatura.calcularFinHorno(temperaturaInicial, 30);
             this.stock = 30;
         }
+        estado = true;
+        System.out.printf("se prendio el horno");
     }
 
     public double getFinCoccion() {

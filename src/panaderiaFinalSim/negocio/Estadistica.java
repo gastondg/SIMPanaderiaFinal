@@ -5,13 +5,10 @@ package panaderiaFinalSim.negocio;
  */
 public class Estadistica {
 
-    public double getClientesLlegaron() {
+    public int getClientesLlegaron() {
         return clientesLlegaron;
     }
-
-
-
-    public double getClientesSeFueron() {
+    public int getClientesSeFueron() {
         return clientesSeFueron;
     }
 
@@ -20,8 +17,8 @@ public class Estadistica {
         this.clientesSeFueron = 0;
     }
 
-    private double clientesLlegaron;
-    private double clientesSeFueron;
+    private int clientesLlegaron;
+    private int clientesSeFueron;
 
     public void llegaCliente(){
         clientesLlegaron++;
@@ -34,7 +31,7 @@ public class Estadistica {
         }
 
     public double getPorcentajeSeFueron() {
-        return ((this.clientesSeFueron/this.clientesLlegaron)*100);
+        return ((((double)this.clientesSeFueron)/((double)this.clientesLlegaron))*100);
     }
 
 

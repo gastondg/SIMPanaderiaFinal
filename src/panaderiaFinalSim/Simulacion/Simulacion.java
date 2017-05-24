@@ -10,7 +10,6 @@ import panaderiaFinalSim.negocio.Cliente;
 import panaderiaFinalSim.negocio.Estadistica;
 import panaderiaFinalSim.negocio.Horno;
 
-import java.awt.*;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -62,14 +61,16 @@ public class Simulacion implements Runnable{
         colaEventos.add(proximoEventoHorno);
         running = true;
         return (new ResultadoIteracion(0, EventoSimulacion.TYPE.INICIO_SIMULACION, randomLlegada, tiempoLlegada, proximaLlegada,
-                0,0,0,0,0,stock,inicioHorno));
+                0,0,0,0,0,stock,inicioHorno, false,0,
+                0,0,0,0,0));
     }
 
     public void nextIteration(){
 
         if(reloj<finSimulacion) {
-            System.out.println("next iteration");
+
             EventoSimulacion evt = colaEventos.poll();
+            System.out.println("next iteration "+ evt.getT().toString());
             reloj = evt.getTime();
             if (evt.isCancelado()) {
                 System.out.println("Evento " + evt.getT().toString() + " CANCELADO");
@@ -85,7 +86,7 @@ public class Simulacion implements Runnable{
                         atenderCliente(cliente);
                     } else { //hay clientes esperando atencion, va a la cola.
                         cliente.enEspera(reloj);
-                        EventoSimulacion eventoSeVa = new EventoSimulacion(cliente.getFinEspera(), EventoSimulacion.TYPE.CLIENTE_SEVA);
+                        EventoSimulacion eventoSeVa = new EventoSimulacion(cliente.getFinEspera(), EventoSimulacion.TYPE.CLIENTE_SE_VA);
                         colaClientesEspera.add(cliente);
                         cliente.setEventoSeVa(eventoSeVa);
                         colaEventos.add(eventoSeVa);
@@ -111,7 +112,7 @@ public class Simulacion implements Runnable{
                         //this.ponerRndmACero();
                     } //else HAY EN LA COLA PERO NO HAY STOCK, AVANZO AL SIGUIENTE EVENTO
                     break;
-                case CLIENTE_SEVA:
+                case CLIENTE_SE_VA:
                     estadistica.seFueCliente(stock);
                     System.out.println("se va el cliente, stock: " + stock);
                     //el primer elemento de los clientes en espera debe ser el que se va
@@ -122,10 +123,9 @@ public class Simulacion implements Runnable{
                     encenderHorno();
                     break;
                 case FIN_HORNO:
-                    horno.setEstado(false);
-                    horno.setProximaPrendida(reloj);
-                    this.inicioHorno=horno.getProximaPrendida();
                     stock += horno.getStock();
+                    horno.finHorno(reloj);
+                    inicioHorno = horno.getProximaPrendida();
                     proximoEventoHorno = new EventoSimulacion(inicioHorno, EventoSimulacion.TYPE.INICIO_HORNO);
                     colaEventos.add(proximoEventoHorno);
                     if (!colaClientesEspera.isEmpty()) {
@@ -135,13 +135,19 @@ public class Simulacion implements Runnable{
 
                     break;
                 }
-            numIteracion++;
-            //ACA TENGO QUE PONER TODO
-            //simulationIterationEnd.ended(new ResultadoIteracion(evt.getT(), reloj, stock, pedido));
+
+            int clientesEsperando = 0;
+            double finEspera = 0;
+            boolean estadoHorno = horno.getEstado();
+            if (!colaClientesEspera.isEmpty()) {
+                finEspera = colaClientesEspera.peek().getFinEspera();
+                clientesEsperando = colaClientesEspera.size();
+            }
             simulationIterationEnd.ended(new ResultadoIteracion(reloj, evt.getT(), randomLlegada,tiempoLlegada, proximaLlegada,
-                    randomAtencion, tiempoAtencion,finDeAtencion,randomPedido,pedido, stock, inicioHorno ));
-            /*System.out.println("RELOJ | EVENTO | N ITERACION");
-            System.out.println(reloj+ " | "+ evt.getT()+ " | "+  numIteracion);*/
+                    randomAtencion, tiempoAtencion,finDeAtencion,randomPedido,pedido, stock, inicioHorno, estadoHorno,
+                    horno.getStock(), horno.getFinCoccion(),finEspera, clientesEsperando,
+                    estadistica.getClientesLlegaron(), estadistica.getClientesSeFueron()));
+
 
         } else {
             System.out.println("simulation ended");

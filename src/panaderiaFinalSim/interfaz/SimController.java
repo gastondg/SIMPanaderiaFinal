@@ -5,6 +5,7 @@ package panaderiaFinalSim.interfaz;
  */
 
 import javafx.application.Platform;
+import javafx.beans.property.ReadOnlyBooleanWrapper;
 import javafx.beans.property.ReadOnlyDoubleWrapper;
 import javafx.beans.property.ReadOnlyIntegerWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -62,31 +63,28 @@ public class SimController implements Initializable{
         simularBtn.setOnAction(event -> initializeSimulation());
 
 
-        TableColumn<ResultadoIteracion, Number> relojColumn, randomLlegadaColumn,
-                tiempoLlegadaColumn, proximaLlegadaColumn, randomAtencionColumn, tiempoAtencionColumn,
-                finDeAtencionColumn, randomPedidoColumn, stockColumn, pedidoColumn, inicioHornoColumn ;
-        TableColumn<ResultadoIteracion, String> relojColumn2,eventoColumn;
+        TableColumn<ResultadoIteracion, Number> randomLlegadaColumn,randomAtencionColumn,randomPedidoColumn, stockColumn, pedidoColumn,
+                clientesArriveColumn, clientesGoneColumn, clientesEnColaColumn, productosColumn;
+        TableColumn<ResultadoIteracion, String> relojColumn, tiempoLlegadaColumn, proximaLlegadaColumn, proxFinEsperaColumn,
+                tiempoAtencionColumn, finDeAtencionColumn, inicioHornoColumn, eventoColumn, finCoccionColumn;
+        TableColumn<ResultadoIteracion, Boolean>  estadoHornoColumn;
 
-        /*relojColumn= new TableColumn<>("Reloj");
-        relojColumn.setCellValueFactory(p -> new ReadOnlyStringWrapper(this.formatTime(p.getValue().getReloj())));
-        */
         relojColumn= new TableColumn<>("Reloj");
-        relojColumn.setCellValueFactory(p -> new ReadOnlyDoubleWrapper(p.getValue().getReloj()));
-
+        relojColumn.setCellValueFactory(p -> new ReadOnlyStringWrapper(this.formatTime(p.getValue().getReloj())));
         eventoColumn = new TableColumn<>("Evento");
         eventoColumn.setCellValueFactory(p -> new ReadOnlyStringWrapper(p.getValue().getTipo().toString()));
         randomLlegadaColumn = new TableColumn<>("RNDLlegada");
         randomLlegadaColumn.setCellValueFactory(p -> new ReadOnlyDoubleWrapper(p.getValue().getRandomLlegada()));
         tiempoLlegadaColumn = new TableColumn<>("TiempoLlegada");
-        tiempoLlegadaColumn.setCellValueFactory(param -> new ReadOnlyDoubleWrapper(param.getValue().getTiempoLlegada()));
+        tiempoLlegadaColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(this.formatTime(param.getValue().getTiempoLlegada())));
         proximaLlegadaColumn = new TableColumn<>("ProximaLlegada");
-        proximaLlegadaColumn.setCellValueFactory(param -> new ReadOnlyDoubleWrapper(param.getValue().getProximaLlegada()));
+        proximaLlegadaColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(this.formatTime(param.getValue().getProximaLlegada())));
         randomAtencionColumn = new TableColumn<>("RNDAtencion");
         randomAtencionColumn.setCellValueFactory(param -> new ReadOnlyDoubleWrapper(param.getValue().getRandomAtencion()));
         tiempoAtencionColumn = new TableColumn<>("TiempoAtencion");
-        tiempoAtencionColumn.setCellValueFactory(param -> new ReadOnlyDoubleWrapper(param.getValue().getTiempoAtencion()));
+        tiempoAtencionColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(this.formatTime(param.getValue().getTiempoAtencion())));
         finDeAtencionColumn = new TableColumn<>("FinAtencion");
-        finDeAtencionColumn.setCellValueFactory(param -> new ReadOnlyDoubleWrapper(param.getValue().getFinDeAtencion()));
+        finDeAtencionColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(this.formatTime(param.getValue().getFinDeAtencion())));
         randomPedidoColumn = new TableColumn<>("RNDPedido");
         randomPedidoColumn.setCellValueFactory(param -> new ReadOnlyDoubleWrapper(param.getValue().getRandomPedido()));
         pedidoColumn = new TableColumn<>("Pedido");
@@ -94,18 +92,33 @@ public class SimController implements Initializable{
         stockColumn = new TableColumn<>("Stock");
         stockColumn.setCellValueFactory(p -> new ReadOnlyIntegerWrapper(p.getValue().getStock()));
         inicioHornoColumn = new TableColumn<>("InicioHorno");
-        inicioHornoColumn.setCellValueFactory(param -> new ReadOnlyDoubleWrapper(param.getValue().getInicioHorno()));
+        inicioHornoColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(this.formatTime(param.getValue().getInicioHorno())));
+        estadoHornoColumn = new TableColumn<>("EstadoHorno");
+        estadoHornoColumn.setCellValueFactory(param -> new ReadOnlyBooleanWrapper(param.getValue().getEstadoHorno()));
+        productosColumn = new TableColumn<>("ProductosCocinando");
+        productosColumn.setCellValueFactory(param -> new ReadOnlyIntegerWrapper(param.getValue().getProductos()));
+        finCoccionColumn = new TableColumn<>("FinCoccion");
+        finCoccionColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(this.formatTime(param.getValue().getFinCoccion())));
+        clientesArriveColumn = new TableColumn<>("CliLlegaron");
+        clientesArriveColumn.setCellValueFactory(param -> new ReadOnlyIntegerWrapper(param.getValue().getClientesArrive()));
+        clientesGoneColumn = new TableColumn<>("CliSeFueron");
+        clientesGoneColumn.setCellValueFactory(param -> new ReadOnlyIntegerWrapper(param.getValue().getClientesGone()));
+        clientesEnColaColumn = new TableColumn<>("CliEnCola");
+        clientesEnColaColumn.setCellValueFactory(param -> new ReadOnlyIntegerWrapper(param.getValue().getClientesEnCola()));
+        proxFinEsperaColumn = new TableColumn<>("proxFinEspera");
+        proxFinEsperaColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(this.formatTime(param.getValue().getFinEsperaCliente())));
 
 
         matrizTable.getColumns().addAll(relojColumn, eventoColumn, randomLlegadaColumn, tiempoLlegadaColumn,
                 proximaLlegadaColumn, randomAtencionColumn, tiempoAtencionColumn, finDeAtencionColumn,
-                randomPedidoColumn, pedidoColumn, stockColumn, inicioHornoColumn);
+                randomPedidoColumn, pedidoColumn, stockColumn, inicioHornoColumn, estadoHornoColumn, productosColumn,
+                finCoccionColumn, clientesEnColaColumn, proxFinEsperaColumn, clientesArriveColumn, clientesGoneColumn);
     }
 
-    /*public String formatTime(double reloj) {
+    public String formatTime(double reloj) {
         int s = (int) (reloj*60);
         return String.format("%d:%02d:%02d", s / 3600, (s % 3600) / 60, (s % 60));
-    }*/
+    }
 
     public void initializeSimulation() {
         double media = Double.parseDouble(mediaTxt.getText());
