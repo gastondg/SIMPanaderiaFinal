@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ca89b5c-cea0-44e6-a223-a7ab8de53f8b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PanaderiaFinalSim/panaderiaFinalSim/Simulacion/ResultadoIteracion.class" afterPath="$PROJECT_DIR$/out/production/PanaderiaFinalSim/panaderiaFinalSim/Simulacion/ResultadoIteracion.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PanaderiaFinalSim/panaderiaFinalSim/Simulacion/Simulacion$1.class" afterPath="$PROJECT_DIR$/out/production/PanaderiaFinalSim/panaderiaFinalSim/Simulacion/Simulacion$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PanaderiaFinalSim/panaderiaFinalSim/Simulacion/Simulacion.class" afterPath="$PROJECT_DIR$/out/production/PanaderiaFinalSim/panaderiaFinalSim/Simulacion/Simulacion.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PanaderiaFinalSim/panaderiaFinalSim/interfaz/SimController.class" afterPath="$PROJECT_DIR$/out/production/PanaderiaFinalSim/panaderiaFinalSim/interfaz/SimController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PanaderiaFinalSim/panaderiaFinalSim/negocio/Estadistica.class" afterPath="$PROJECT_DIR$/out/production/PanaderiaFinalSim/panaderiaFinalSim/negocio/Estadistica.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PanaderiaFinalSim/panaderiaFinalSim/negocio/Horno.class" afterPath="$PROJECT_DIR$/out/production/PanaderiaFinalSim/panaderiaFinalSim/negocio/Horno.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/panaderiaFinalSim/Simulacion/EventoSimulacion.java" afterPath="$PROJECT_DIR$/src/panaderiaFinalSim/Simulacion/EventoSimulacion.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/PanaderiaFinalSim/panaderiaFinalSim/interfaz/SimController.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/panaderiaFinalSim/Simulacion/ResultadoIteracion.java" afterPath="$PROJECT_DIR$/src/panaderiaFinalSim/Simulacion/ResultadoIteracion.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/panaderiaFinalSim/Simulacion/Simulacion.java" afterPath="$PROJECT_DIR$/src/panaderiaFinalSim/Simulacion/Simulacion.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/panaderiaFinalSim/interfaz/SimController.java" afterPath="$PROJECT_DIR$/src/panaderiaFinalSim/interfaz/SimController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/panaderiaFinalSim/negocio/Estadistica.java" afterPath="$PROJECT_DIR$/src/panaderiaFinalSim/negocio/Estadistica.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/panaderiaFinalSim/negocio/Horno.java" afterPath="$PROJECT_DIR$/src/panaderiaFinalSim/negocio/Horno.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Simulacion.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Simulacion.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/panaderiaFinalSim/Simulacion/Simulacion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="140" column="52" lean-forward="false" selection-start-line="140" selection-start-column="52" selection-end-line="140" selection-end-column="52" />
+            <state relative-caret-position="348">
+              <caret line="233" column="77" lean-forward="false" selection-start-line="233" selection-start-column="77" selection-end-line="233" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,8 +65,8 @@
       <file leaf-file-name="ResultadoIteracion.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/panaderiaFinalSim/Simulacion/ResultadoIteracion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="108" column="39" lean-forward="false" selection-start-line="108" selection-start-column="39" selection-end-line="108" selection-end-column="39" />
+            <state relative-caret-position="-34">
+              <caret line="137" column="18" lean-forward="false" selection-start-line="137" selection-start-column="18" selection-end-line="137" selection-end-column="18" />
               <folding>
                 <element signature="e#890#891#0" expanded="true" />
                 <element signature="e#924#925#0" expanded="true" />
@@ -140,11 +130,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SimController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/panaderiaFinalSim/interfaz/SimController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="96" column="108" lean-forward="false" selection-start-line="96" selection-start-column="108" selection-end-line="96" selection-end-column="108" />
+            <state relative-caret-position="230">
+              <caret line="111" column="37" lean-forward="false" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -207,10 +197,10 @@
         <option value="$PROJECT_DIR$/src/panaderiaFinalSim/negocio/Cliente.java" />
         <option value="$PROJECT_DIR$/src/panaderiaFinalSim/negocio/Estadistica.java" />
         <option value="$PROJECT_DIR$/src/panaderiaFinalSim/Simulacion/EventoSimulacion.java" />
-        <option value="$PROJECT_DIR$/src/panaderiaFinalSim/interfaz/SimController.java" />
         <option value="$PROJECT_DIR$/src/panaderiaFinalSim/negocio/Horno.java" />
         <option value="$PROJECT_DIR$/src/panaderiaFinalSim/Simulacion/ResultadoIteracion.java" />
         <option value="$PROJECT_DIR$/src/panaderiaFinalSim/Simulacion/Simulacion.java" />
+        <option value="$PROJECT_DIR$/src/panaderiaFinalSim/interfaz/SimController.java" />
       </list>
     </option>
   </component>
@@ -854,13 +844,13 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921812" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921812" sideWeight="0.49810505" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921812" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2942387" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2942387" sideWeight="0.50189495" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1209,6 +1199,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/panaderiaFinalSim/Simulacion/Simulacion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="233" column="77" lean-forward="false" selection-start-line="233" selection-start-column="77" selection-end-line="233" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/panaderiaFinalSim/negocio/Estadistica.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -1234,33 +1234,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/panaderiaFinalSim/negocio/Horno.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="64" column="46" lean-forward="false" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
-          <folding>
-            <element signature="e#731#732#0" expanded="true" />
-            <element signature="e#769#770#0" expanded="true" />
-            <element signature="e#994#995#0" expanded="true" />
-            <element signature="e#1023#1024#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/panaderiaFinalSim/interfaz/SimController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="96" column="108" lean-forward="false" selection-start-line="96" selection-start-column="108" selection-end-line="96" selection-end-column="108" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/panaderiaFinalSim/Simulacion/ResultadoIteracion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="108" column="39" lean-forward="false" selection-start-line="108" selection-start-column="39" selection-end-line="108" selection-end-column="39" />
+        <state relative-caret-position="-34">
+          <caret line="137" column="18" lean-forward="false" selection-start-line="137" selection-start-column="18" selection-end-line="137" selection-end-column="18" />
           <folding>
             <element signature="e#890#891#0" expanded="true" />
             <element signature="e#924#925#0" expanded="true" />
@@ -1308,10 +1285,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/panaderiaFinalSim/Simulacion/Simulacion.java">
+    <entry file="file://$PROJECT_DIR$/src/panaderiaFinalSim/negocio/Horno.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="140" column="52" lean-forward="false" selection-start-line="140" selection-start-column="52" selection-end-line="140" selection-end-column="52" />
+        <state relative-caret-position="462">
+          <caret line="64" column="46" lean-forward="false" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
+          <folding>
+            <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#769#770#0" expanded="true" />
+            <element signature="e#994#995#0" expanded="true" />
+            <element signature="e#1023#1024#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/panaderiaFinalSim/interfaz/SimController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="111" column="37" lean-forward="false" selection-start-line="111" selection-start-column="37" selection-end-line="111" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

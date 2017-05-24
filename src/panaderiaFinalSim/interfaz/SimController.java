@@ -108,6 +108,26 @@ public class SimController implements Initializable{
         proxFinEsperaColumn = new TableColumn<>("proxFinEspera");
         proxFinEsperaColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(this.formatTime(param.getValue().getFinEsperaCliente())));
 
+        //hacer todas las columnas un sortable
+        relojColumn.setSortable(false);
+        eventoColumn.setSortable(false);
+        randomLlegadaColumn.setSortable(false);
+        tiempoLlegadaColumn.setSortable(false);
+        proximaLlegadaColumn.setSortable(false);
+        randomAtencionColumn.setSortable(false);
+        tiempoAtencionColumn.setSortable(false);
+        finDeAtencionColumn.setSortable(false);
+        randomPedidoColumn.setSortable(false);
+        pedidoColumn.setSortable(false);
+        stockColumn.setSortable(false);
+        inicioHornoColumn.setSortable(false);
+        estadoHornoColumn.setSortable(false);
+        productosColumn.setSortable(false);
+        finCoccionColumn.setSortable(false);
+        clientesArriveColumn.setSortable(false);
+        clientesGoneColumn.setSortable(false);
+        clientesEnColaColumn.setSortable(false);
+        proxFinEsperaColumn.setSortable(false);
 
         matrizTable.getColumns().addAll(relojColumn, eventoColumn, randomLlegadaColumn, tiempoLlegadaColumn,
                 proximaLlegadaColumn, randomAtencionColumn, tiempoAtencionColumn, finDeAtencionColumn,
@@ -131,8 +151,14 @@ public class SimController implements Initializable{
 
 
         Simulacion simulacion = new Simulacion(a, b, finSimulacion, intervaloHorno, media, tempInicialHorno, stockInicial,
-                () -> {showDialog("Fin Simulacion", "Estadistica va aca");},
-                (resultadoIteracion) -> matrizTable.getItems().add(resultadoIteracion));
+                (Estadistica estadistica) -> {
+            StringBuilder contenido = new StringBuilder();
+            StringBuilder informacion = new StringBuilder();
+            contenido.append("Llegaron ").append(estadistica.getClientesLlegaron()).append(" clientes. \n");
+            contenido.append("Se fueron ").append(estadistica.getClientesSeFueron()).append(" clientes");
+            informacion.append("Se fueron un %").append(estadistica.getPorcentajeSeFueron()).append(" de los clientes que llegaron");
+            showDialog("Fin Simulacion", informacion.toString(), contenido.toString());},
+            (resultadoIteracion) -> matrizTable.getItems().add(resultadoIteracion));
         ResultadoIteracion inicializacion = simulacion.initializeSim();
         matrizTable.getItems().addAll(inicializacion);
 
@@ -140,11 +166,11 @@ public class SimController implements Initializable{
         thread.start();
     }
 
-    public void showDialog(String titulo, String contenido) {
+    public void showDialog(String titulo, String informacion, String contenido) {
         Platform.runLater( ()-> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle(titulo);
-            alert.setHeaderText("Look, an Information Dialog");
+            alert.setHeaderText(informacion);
             alert.setContentText(contenido);
 
             alert.showAndWait();

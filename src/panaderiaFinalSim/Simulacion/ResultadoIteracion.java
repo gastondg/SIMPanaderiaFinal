@@ -141,8 +141,21 @@ public class ResultadoIteracion {
                 ", reloj=" + reloj +
                 ", stock=" + stock +
                 ", pedido=" + pedido +
+                ", productos=" + productos +
+                ", clientesArrive=" + clientesArrive +
+                ", clientesGone=" + clientesGone +
+                ", clientesEnCola=" + clientesEnCola +
+                ", inicioHorno=" + inicioHorno +
+                ", randomLlegada=" + randomLlegada +
+                ", tiempoLlegada=" + tiempoLlegada +
+                ", proximaLlegada=" + proximaLlegada +
+                ", randomAtencion=" + randomAtencion +
+                ", tiempoAtencion=" + tiempoAtencion +
+                ", finDeAtencion=" + finDeAtencion +
+                ", randomPedido=" + randomPedido +
+                ", finCoccion=" + finCoccion +
+                ", finEsperaCliente=" + finEsperaCliente +
+                ", estadoHorno=" + estadoHorno +
                 '}';
     }
-
-
 }

@@ -156,7 +156,7 @@ public class Simulacion implements Runnable{
             System.out.println("Total clientes que se fueron : %" + estadistica.getPorcentajeSeFueron());
             running = false;
             finised = true;
-            simulationEndCallback.ended();
+            simulationEndCallback.ended(estadistica);
         }
 
         }
@@ -178,7 +178,7 @@ public class Simulacion implements Runnable{
     }
 
     public interface SimualtionEndCallback {
-        void ended();
+        void ended(Estadistica estadistica);
     }
 
     public interface SimulationIterationEnd {
@@ -231,7 +231,7 @@ public class Simulacion implements Runnable{
 
     public static void main(String[] args) {
         // write your code here
-        Simulacion sim = new Simulacion(0.5, 1.5, 960,35,3,5,30, () -> {
+        Simulacion sim = new Simulacion(0.5, 1.5, 960,35,3,5,30, (estadistica) -> {
             System.out.printf("Simulation ended on main thread... exiting...");
             //MOSTRAR ESTADISTICAS
         }, resultadoIteracion -> {
