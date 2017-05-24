@@ -21,7 +21,7 @@ public class Simulacion implements Runnable{
     private double a;
     private double b;
     public boolean running = false;
-    public boolean finised = false;
+    public boolean finished = false;
     Queue<Cliente> colaClientesEspera, colaClientesAtendidos;
     Queue<EventoSimulacion> colaEventos;
     Estadistica estadistica;
@@ -52,6 +52,7 @@ public class Simulacion implements Runnable{
         this.horno = new Horno(intervaloHorno);
         this.inicioHorno = horno.getProximaPrendida();
         this.estadistica = new Estadistica();
+        colaEventos.add(new EventoSimulacion(finSimulacion, EventoSimulacion.TYPE.FIN_SIMULACION));
 
     }
 
@@ -134,6 +135,9 @@ public class Simulacion implements Runnable{
                     }
 
                     break;
+                case FIN_SIMULACION:
+                    reloj = evt.getTime();
+                    break;
                 }
 
             int clientesEsperando = 0;
@@ -155,7 +159,7 @@ public class Simulacion implements Runnable{
             System.out.println("Llegaron "+estadistica.getClientesLlegaron()+ " clientes");
             System.out.println("Total clientes que se fueron : %" + estadistica.getPorcentajeSeFueron());
             running = false;
-            finised = true;
+            finished = true;
             simulationEndCallback.ended(estadistica);
         }
 
@@ -164,7 +168,7 @@ public class Simulacion implements Runnable{
 
     @Override
     public void run() {
-        while (true) {
+        while (!finished) {
             if (running) {
                 nextIteration();
             } else {

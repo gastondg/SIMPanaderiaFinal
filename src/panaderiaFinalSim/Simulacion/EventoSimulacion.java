@@ -19,6 +19,7 @@ public class EventoSimulacion implements Comparable<EventoSimulacion> {
 
         public enum TYPE {
             INICIO_SIMULACION,
+            FIN_SIMULACION,
             LLEGADA_CLIENTE,
             CLIENTE_SE_VA,
             FIN_ATENCION,

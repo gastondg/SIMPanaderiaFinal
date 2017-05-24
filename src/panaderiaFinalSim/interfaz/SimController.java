@@ -14,37 +14,31 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import panaderiaFinalSim.Simulacion.ResultadoIteracion;
 import panaderiaFinalSim.Simulacion.Simulacion;
-import panaderiaFinalSim.eventos.AtencionCliente;
-import panaderiaFinalSim.eventos.LlegadaCliente;
-import panaderiaFinalSim.eventos.PedidoCliente;
-import panaderiaFinalSim.negocio.Cliente;
 import panaderiaFinalSim.negocio.Estadistica;
-import panaderiaFinalSim.negocio.Horno;
-
 import java.net.URL;
 import java.util.*;
 
 public class SimController implements Initializable{
     @FXML
-    private TextField intervaloHornoTxt;
+    private Spinner<Double> intervaloHornoSpinner;
 
     @FXML
-    private TextField finSimulacionTxt;
+    private Spinner<Double> finSimulacionSpinner;
 
     @FXML
-    private TextField mediaTxt;
+    private Spinner<Double> mediaSpinner;
 
     @FXML
-    private TextField aTxt;
+    private Spinner<Double> aSpinner;
     //Spinner<Double>
     @FXML
-    private TextField bTxt;
+    private Spinner<Double> bSpinner;
 
     @FXML
-    private TextField tempInicialTxt;
+    private Spinner<Double> tempInicialSpinner;
 
     @FXML
-    private TextField stockInicialTxt;
+    private Spinner<Integer> stockInicialSpinner;
 
     @FXML
     private Button simularBtn;
@@ -59,9 +53,29 @@ public class SimController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       // uniformATxt.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0,99,0.5,0.1));
-        simularBtn.setOnAction(event -> initializeSimulation());
 
+        aSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0,99,0.5,0.1));
+        bSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.1,99,1.5,0.1));
+        mediaSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.1,99,3,0.1));
+        tempInicialSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0,66,5,0.5));
+        stockInicialSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99, 30, 1));
+        finSimulacionSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(1,960,480,1));
+        intervaloHornoSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(1,961,35,0.5));
+
+        bSpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue <= aSpinner.getValue()) {
+                bSpinner.getValueFactory().setValue(aSpinner.getValue()+0.1);
+            }
+        });
+
+        aSpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue >= bSpinner.getValue() ) {
+                bSpinner.getValueFactory().setValue(aSpinner.getValue()+0.1);
+            }
+        });
+
+        simularBtn.setOnAction(event -> initializeSimulation());
+        resetBtn.setOnAction(event -> matrizTable.getItems().clear());
 
         TableColumn<ResultadoIteracion, Number> randomLlegadaColumn,randomAtencionColumn,randomPedidoColumn, stockColumn, pedidoColumn,
                 clientesArriveColumn, clientesGoneColumn, clientesEnColaColumn, productosColumn;
@@ -108,31 +122,16 @@ public class SimController implements Initializable{
         proxFinEsperaColumn = new TableColumn<>("proxFinEspera");
         proxFinEsperaColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(this.formatTime(param.getValue().getFinEsperaCliente())));
 
-        //hacer todas las columnas un sortable
-        relojColumn.setSortable(false);
-        eventoColumn.setSortable(false);
-        randomLlegadaColumn.setSortable(false);
-        tiempoLlegadaColumn.setSortable(false);
-        proximaLlegadaColumn.setSortable(false);
-        randomAtencionColumn.setSortable(false);
-        tiempoAtencionColumn.setSortable(false);
-        finDeAtencionColumn.setSortable(false);
-        randomPedidoColumn.setSortable(false);
-        pedidoColumn.setSortable(false);
-        stockColumn.setSortable(false);
-        inicioHornoColumn.setSortable(false);
-        estadoHornoColumn.setSortable(false);
-        productosColumn.setSortable(false);
-        finCoccionColumn.setSortable(false);
-        clientesArriveColumn.setSortable(false);
-        clientesGoneColumn.setSortable(false);
-        clientesEnColaColumn.setSortable(false);
-        proxFinEsperaColumn.setSortable(false);
+        //hacer todas las columnas unsortable
 
         matrizTable.getColumns().addAll(relojColumn, eventoColumn, randomLlegadaColumn, tiempoLlegadaColumn,
                 proximaLlegadaColumn, randomAtencionColumn, tiempoAtencionColumn, finDeAtencionColumn,
                 randomPedidoColumn, pedidoColumn, stockColumn, inicioHornoColumn, estadoHornoColumn, productosColumn,
                 finCoccionColumn, clientesEnColaColumn, proxFinEsperaColumn, clientesArriveColumn, clientesGoneColumn);
+
+        matrizTable.getColumns().forEach(tableColumn -> {
+            tableColumn.setSortable(false);
+        });
     }
 
     public String formatTime(double reloj) {
@@ -140,14 +139,16 @@ public class SimController implements Initializable{
         return String.format("%d:%02d:%02d", s / 3600, (s % 3600) / 60, (s % 60));
     }
 
+
+
     public void initializeSimulation() {
-        double media = Double.parseDouble(mediaTxt.getText());
-        double a = Double.parseDouble(aTxt.getText());
-        double b = Double.parseDouble(bTxt.getText());
-        double tempInicialHorno = Double.parseDouble(tempInicialTxt.getText());
-        double intervaloHorno = Double.parseDouble(intervaloHornoTxt.getText());
-        int stockInicial = Integer.parseInt(stockInicialTxt.getText());
-        double finSimulacion = Double.parseDouble(finSimulacionTxt.getText());
+        double media = (mediaSpinner.getValue());
+        double a = (aSpinner.getValue());
+        double b = (bSpinner.getValue());
+        double tempInicialHorno = (tempInicialSpinner.getValue());
+        double intervaloHorno = (intervaloHornoSpinner.getValue());
+        int stockInicial = (stockInicialSpinner.getValue());
+        double finSimulacion = (finSimulacionSpinner.getValue());
 
 
         Simulacion simulacion = new Simulacion(a, b, finSimulacion, intervaloHorno, media, tempInicialHorno, stockInicial,
